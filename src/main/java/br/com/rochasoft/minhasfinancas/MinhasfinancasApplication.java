@@ -42,9 +42,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MinhasfinancasApplication 
 {
+	
+	public static void testandoLiveReload()
+	{
+		System.out.print("live reload funcionando...");
+	}
 
 	public static void main(String[] args) 
 	{
+		testandoLiveReload();
 		SpringApplication.run(MinhasfinancasApplication.class, args);
 	}
 
