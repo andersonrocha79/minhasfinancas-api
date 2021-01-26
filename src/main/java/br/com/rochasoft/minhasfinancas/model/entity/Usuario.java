@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -38,6 +40,7 @@ public class Usuario
 	private String email;
 	
 	@Column(name = "senha")
+	@JsonIgnore // não retorna a senha ao gerar o json do objeto
 	private String senha;
 	
 

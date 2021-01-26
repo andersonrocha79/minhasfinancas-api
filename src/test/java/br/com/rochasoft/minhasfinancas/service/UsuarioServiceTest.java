@@ -19,9 +19,8 @@ import br.com.rochasoft.minhasfinancas.model.entity.Usuario;
 import br.com.rochasoft.minhasfinancas.model.repository.UsuarioRepository;
 import br.com.rochasoft.minhasfinancas.service.impl.UsuarioServiceImpl;
 
-@SpringBootTest
 @ExtendWith(SpringExtension.class)
-@ActiveProfiles("test") 
+@ActiveProfiles("test") // inclui esta diretiva para usar as definições de 'application-test.properties' nos testes, com banco h2
 public class UsuarioServiceTest 
 {
 

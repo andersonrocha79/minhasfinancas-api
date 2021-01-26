@@ -57,7 +57,7 @@ public class LancamentoRepositoryTest
 		
 	}
 
-	private Lancamento criarLancamento() 
+	public static Lancamento criarLancamento() 
 	{
 		
 		Lancamento lancamento = Lancamento.builder()

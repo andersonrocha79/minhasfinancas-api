@@ -49,10 +49,10 @@ public class LancamentoServiceImpl implements LancamentoService
 	public Lancamento atualizar(Lancamento lancamento) 
 	{
 		
-		validar(lancamento);
-		
 		// gera uma exceção se o id não for definido
-		Objects.requireNonNull(lancamento.getId());
+		Objects.requireNonNull(lancamento.getId());		
+		
+		validar(lancamento);
 		
 		return repository.save(lancamento);
 		
