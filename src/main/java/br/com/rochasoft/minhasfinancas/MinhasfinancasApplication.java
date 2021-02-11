@@ -2,6 +2,9 @@ package br.com.rochasoft.minhasfinancas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 /*
@@ -40,7 +43,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class MinhasfinancasApplication 
+@EnableWebMvc
+public class MinhasfinancasApplication implements WebMvcConfigurer 
 {
 	
 	public static void testandoLiveReload()
@@ -52,6 +56,16 @@ public class MinhasfinancasApplication
 	{
 		testandoLiveReload();
 		SpringApplication.run(MinhasfinancasApplication.class, args);
+	}
+	
+	@Override
+	public void addCorsMappings(CorsRegistry registry) 
+	{
+		
+		// habilita de onde as requisições ao servidor serão aceitas
+		// ficou liberado para qualquer caminho, mas pode definir as origens permitidas
+		registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+		
 	}
 
 }

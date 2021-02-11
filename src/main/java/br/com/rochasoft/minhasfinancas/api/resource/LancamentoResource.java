@@ -209,5 +209,38 @@ public class LancamentoResource
 				
 		
 	}		
+	
+	private LancamentoDTO converter(Lancamento lancamento)
+	{
+		return LancamentoDTO.builder()
+				.id(lancamento.getId())
+				.descricao(lancamento.getDescricao())
+				.valor(lancamento.getValor())
+				.mes(lancamento.getMes())
+				.ano(lancamento.getAno())
+				.tipo(lancamento.getTipo().name())
+				.status(lancamento.getStatus().name())
+				.usuario(lancamento.getUsuario().getId())
+				.build();
+	}
 
+	@GetMapping("{id}")
+	public ResponseEntity obterLancamento(@PathVariable("id") Long id)	
+	{
+
+		return service.obterPorId(id).map( lancamento -> 
+		{
+			
+			try
+			{						
+				return new ResponseEntity(converter(lancamento), HttpStatus.OK);
+			}
+			catch (RegraNegocioException e)
+			{
+				return ResponseEntity.badRequest().body(e.getMessage());
+			}
+				
+		}).orElseGet( () -> new ResponseEntity("Lançamento não encontrado", HttpStatus.NOT_FOUND));
+		
+	}	
 }
