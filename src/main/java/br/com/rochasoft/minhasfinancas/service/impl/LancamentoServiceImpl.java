@@ -143,10 +143,10 @@ public class LancamentoServiceImpl implements LancamentoService
 	{
 	
 		// total de receitas
-		BigDecimal receitas = repository.obterSaldoPorTipoLancamentoEUsuario(id, TipoLancamento.RECEITA);
+		BigDecimal receitas = repository.obterSaldoPorTipoLancamentoEUsuarioEStatus(id, TipoLancamento.RECEITA, StatusLancamento.EFETIVADO);
 		
 		// total de despesas
-		BigDecimal despesas = repository.obterSaldoPorTipoLancamentoEUsuario(id, TipoLancamento.DESPESA);
+		BigDecimal despesas = repository.obterSaldoPorTipoLancamentoEUsuarioEStatus(id, TipoLancamento.DESPESA, StatusLancamento.EFETIVADO);
 		
 		if (receitas == null) receitas = BigDecimal.ZERO;
 		if (despesas == null) despesas = BigDecimal.ZERO;
