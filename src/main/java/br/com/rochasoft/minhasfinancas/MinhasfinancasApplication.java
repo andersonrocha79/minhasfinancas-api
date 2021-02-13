@@ -39,12 +39,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 	testes no spring
 	https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#testing-introduction
 	
+	build da aplicação 
+	mvn clean package
+	
 */
 
 
 @SpringBootApplication
-@EnableWebMvc
-public class MinhasfinancasApplication implements WebMvcConfigurer 
+// @EnableWebMvc  - esta anotação estava gerando erros no teste
+public class MinhasfinancasApplication // implements WebMvcConfigurer
 {
 	
 	public static void testandoLiveReload()
@@ -58,14 +61,4 @@ public class MinhasfinancasApplication implements WebMvcConfigurer
 		SpringApplication.run(MinhasfinancasApplication.class, args);
 	}
 	
-	@Override
-	public void addCorsMappings(CorsRegistry registry) 
-	{
-		
-		// habilita de onde as requisições ao servidor serão aceitas
-		// ficou liberado para qualquer caminho, mas pode definir as origens permitidas
-		registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
-		
-	}
-
 }
